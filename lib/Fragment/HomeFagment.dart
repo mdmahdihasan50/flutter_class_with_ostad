@@ -83,6 +83,16 @@ class HomeFagment extends StatelessWidget {
               Navigator.push(context, MaterialPageRoute(builder: (context) => BuySelCal(),));
             }, child: const Text('Buy sell Calculate')),
       ),
+      Padding(
+        padding: const EdgeInsets.all(5.0),
+        child: ElevatedButton(
+            style: ElevatedButton.styleFrom(
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+                fixedSize: const Size(300, 50)),
+            onPressed: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) => BuySelCal(),));
+            }, child: const Text('Buy sell Calculate')),
+      ),
     ],));
   }
 }
