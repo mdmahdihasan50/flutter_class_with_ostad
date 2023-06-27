@@ -104,6 +104,14 @@ class _BuySelCalState extends State<BuySelCal> {
   TextEditingController _sell=TextEditingController();
 
   var sum;
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    if(_buy.text.trim().isEmpty){
+      sum=00.00;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
