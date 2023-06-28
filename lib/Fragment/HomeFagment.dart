@@ -109,7 +109,7 @@ class _BuySelCalState extends State<BuySelCal> {
     // TODO: implement initState
     super.initState();
     if(_buy.text.trim().isEmpty){
-      sum=00.00;
+      sum=00;
     }
   }
 
