@@ -68,55 +68,52 @@ class _TodoState extends State<Todo> {
               child: ListView.builder(
                 itemCount: Todolist.length,
                 itemBuilder: (context, index) {
-                return GestureDetector(
-                  onLongPress: () {
+                return Card(
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                  child: ListTile(
+                    onTap: () {
+                      int iteamn=index+1;
+                      toast('iteam= $iteamn', Colors.green);
+                    },
+                    onLongPress: () {
+                        showDialog(context: context, builder: (context) {
+                          return AlertDialog(
 
-                    showDialog(context: context, builder: (context) {
-                      return AlertDialog(
+                            icon: Icon(Icons.delete),
+                            title: Text('sure remove ?'),
+                            actionsAlignment: MainAxisAlignment.center,
+                            actions: [
+                              ElevatedButton(
+                                  style: ElevatedButton.styleFrom(
+                                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+                                      fixedSize: Size(100, 50)),
+                                  onPressed: () {
+                                    Navigator.of(context).pop();
+                                  }, child: Text('NO')),
+                              ElevatedButton(
+                                  style: ElevatedButton.styleFrom(
+                                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+                                      fixedSize: Size(100, 50)),
+                                  onPressed: () {
+                                    Navigator.pop(context);
+                                    Todolist.removeAt(index);
 
-                        icon: Icon(Icons.delete),
-                        title: Text('sure remove ?'),
-                        actionsAlignment: MainAxisAlignment.center,
-                        actions: [
-                          ElevatedButton(
-                              style: ElevatedButton.styleFrom(
-                                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-                                  fixedSize: Size(100, 50)),
-                              onPressed: () {
-                                Navigator.of(context).pop();
-                              }, child: Text('NO')),
-                          ElevatedButton(
-                              style: ElevatedButton.styleFrom(
-                                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-                                  fixedSize: Size(100, 50)),
-                              onPressed: () {
-                                Navigator.pop(context);
-                                Todolist.removeAt(index);
+                                    if(mounted){
+                                      setState(() {});
+                                    }
 
-                                if(mounted){
-                                  setState(() {});
-                                }
+                                  }, child: Text('Yes')),
+                            ],);
+                        },);
 
-                              }, child: Text('Yes')),
-                        ],);
-                    },);
+                      },
+                    title: Text(Todolist[index]),
+                      leading: IconButton(onPressed: () {
 
-                  },
-                  child: Card(
-                    child: Row(
-                        children: [
-                          SizedBox(width: 10,),
-                          Expanded(flex: 8,
-                              child: Text(Todolist[index])),
-                          Expanded(
-                              flex: 2,
-                              child: IconButton(onPressed: () {
+                      }, icon: Icon(Icons.close)),
+                    trailing: IconButton(onPressed: () {
 
-
-
-                              }, icon: Icon(Icons.edit)),
-
-                          )]),
+                    }, icon: Icon(Icons.edit)),
                   ),
                 );
               },),
