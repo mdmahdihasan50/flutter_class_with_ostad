@@ -2,13 +2,14 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_class/main.dart';
 
-class Todo extends StatefulWidget {
+
+//########Todo()
+/*class Todo extends StatefulWidget {
   const Todo({Key? key}) : super(key: key);
 
   @override
   State<Todo> createState() => _TodoState();
 }
-
 class _TodoState extends State<Todo> {
 
   TextEditingController Todolistadd = TextEditingController();
@@ -110,7 +111,8 @@ class _TodoState extends State<Todo> {
                     title: Text(Todolist[index]),
                       leading: IconButton(onPressed: () {
 
-                      }, icon: Icon(Icons.close)),
+                      }, icon: Icon(Icons.done)
+                      ),
                     trailing: IconButton(onPressed: () {
 
                     }, icon: Icon(Icons.edit)),
@@ -123,5 +125,23 @@ class _TodoState extends State<Todo> {
       )),
     );
   }
+}*/
+
+
+class Todo extends StatefulWidget {
+  const Todo({Key? key}) : super(key: key);
+
+  @override
+  State<Todo> createState() => _TodoState();
 }
+
+class _TodoState extends State<Todo> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      
+    );
+  }
+}
+
 
