@@ -102,15 +102,14 @@ class _BuySelCalState extends State<BuySelCal> {
 
   TextEditingController _buy=TextEditingController();
   TextEditingController _sell=TextEditingController();
+  bool _tVisibl=false;
 
   var sum;
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    if(_buy.text.trim().isEmpty){
-      sum=00;
-    }
+
   }
 
   @override
@@ -122,20 +121,23 @@ class _BuySelCalState extends State<BuySelCal> {
           padding: const EdgeInsets.all(40.0),
           child: Column(
             children: [
-              Text('$sum tk',style: const TextStyle(fontSize: 30)),
+              SizedBox(height: 50, child: Visibility(visible: _tVisibl,child: Text('$sum tk',style: const TextStyle(fontSize: 30)))),
               TextField(keyboardType: TextInputType.number,controller: _buy, decoration: InputDecoration(prefixIcon: const Icon(Icons.numbers),label: Text('Buy'),border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)))),
               const SizedBox(height: 10),
               TextField(keyboardType: TextInputType.number,controller: _sell, decoration: InputDecoration(prefixIcon: const Icon(Icons.sell),label: Text('Sell'),border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)))),
               ElevatedButton(style: ElevatedButton.styleFrom(fixedSize: const Size(double.infinity, 20)),onPressed: () {
-                setState(() {
-                  // var Buy =_buy.text.toString();
-                  // var Sell =_sell.text.toString();
 
-                  var buy = double.parse(_buy.text);
-                  var sell = double.parse(_sell.text);
-                  sum =sell-buy;
+                // var Buy =_buy.text.toString();
+                // var Sell =_sell.text.toString();
 
-                });
+                var buy = double.parse(_buy.text);
+                var sell = double.parse(_sell.text);
+                sum =sell-buy;
+                if(_buy.text.trim().isNotEmpty){
+                  _tVisibl=true;
+                }
+                setState(() {});
+
                 }, child: const Text("Calculate"))
             ],
           ),
