@@ -4,7 +4,7 @@ import 'package:flutter_class/main.dart';
 
 
 //########Todo()
-/*class Todo extends StatefulWidget {
+class Todo extends StatefulWidget {
   const Todo({Key? key}) : super(key: key);
 
   @override
@@ -125,23 +125,5 @@ class _TodoState extends State<Todo> {
       )),
     );
   }
-}*/
-
-
-class Todo extends StatefulWidget {
-  const Todo({Key? key}) : super(key: key);
-
-  @override
-  State<Todo> createState() => _TodoState();
 }
-
-class _TodoState extends State<Todo> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      
-    );
-  }
-}
-
 

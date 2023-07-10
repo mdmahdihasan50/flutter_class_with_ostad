@@ -139,14 +139,9 @@ class MyScreen extends StatelessWidget {
             elevation: 10,
             child: const Icon(Icons.add),
             onPressed: () {
-              Fluttertoast.showToast(
-                  msg: 'floatingActionButton',
-                  toastLength: Toast.LENGTH_SHORT,
-                  gravity: ToastGravity.CENTER,
-                  timeInSecForIosWeb: 1,
-                  textColor: Colors.white,
-                  fontSize: 16.0
-              );
+
+              toast('floatingActionButton', Colors.green);
+
             },
           ),
           bottomNavigationBar: BottomNavigationBar(
@@ -202,41 +197,7 @@ class MyScreen extends StatelessWidget {
               ],
             ),
           ),
-          endDrawer: Drawer(
-            child: ListView(
-              children: [
-                DrawerHeader(
-                  padding: const EdgeInsets.all(0),
-                  child: UserAccountsDrawerHeader(
-                      accountName: const Text('Mahdi Hasan'),
-                      accountEmail: const Text('mahdihasan@gmail.com'),
-                      currentAccountPicture: Image.network(
-                          "https://ruqyahmedia25.xyz/image/Mahdi%20Hasan.jpg")),
-                ),
-                ListTile(
-                  leading: const Icon(Icons.home),
-                  title: const Text('Home'),
-                  onTap: () {
-                    MySnakber('Home', context);
-                  },
-                ),
-                ListTile(
-                  leading: const Icon(Icons.phone),
-                  title: const Text('Phone'),
-                  onTap: () {
-                    MySnakber('Phone', context);
-                  },
-                ),
-                ListTile(
-                  leading: const Icon(Icons.mail),
-                  title: const Text('Mail'),
-                  onTap: () {
-                    MySnakber('Mail', context);
-                  },
-                ),
-              ],
-            ),
-          ),
+
           body: const TapBer(),
         ),
       ),
@@ -293,7 +254,9 @@ class ListViewbuilder extends StatelessWidget {
               ListTile(onTap: () {
                 int sumindex=index +1;
                 toast("Button= $sumindex", Colors.green);
-              }, leading: Image.network(news[index]['img']!),title: Text(news[index]['tile']!),subtitle: Text(news[index]['des']!),trailing: Icon(Icons.arrow_forward)),
+              }, leading: Image.network(news[index]['img']!,errorBuilder: (context, error, stackTrace) {
+                return Icon(Icons.image);
+              },),title: Text(news[index]['tile']!),subtitle: Text(news[index]['des']!),trailing: Icon(Icons.arrow_forward)),
               Divider(),
             ],
           );
