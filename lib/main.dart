@@ -2,9 +2,10 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_class/Fragment/HomeFagment.dart';
-import 'package:flutter_class/Fragment/Todo.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+
+import 'Fragment/HomeFagment.dart';
+import 'Fragment/Todo.dart';
 
 void main() {
   runApp(MyApp());
@@ -73,22 +74,22 @@ class MyScreen extends StatelessWidget {
         title: Text('Are You Exit'),
         actionsAlignment: MainAxisAlignment.center,
         actions: [
-        ElevatedButton(
-            style: ElevatedButton.styleFrom(
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-                fixedSize: Size(100, 50)),
-            onPressed: () {
-              Navigator.of(context).pop();
-            }, child: Text('NO')),
-        ElevatedButton(
-            style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.blueGrey,
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-                fixedSize: Size(100, 50)),
-            onPressed: () {
-              SystemNavigator.pop();
-            }, child: Text('Yes')),
-      ],);
+          ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+                  fixedSize: Size(100, 50)),
+              onPressed: () {
+                Navigator.of(context).pop();
+              }, child: Text('NO')),
+          ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.blueGrey,
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+                  fixedSize: Size(100, 50)),
+              onPressed: () {
+                SystemNavigator.pop();
+              }, child: Text('Yes')),
+        ],);
     },);
   }
   //************
@@ -128,12 +129,12 @@ class MyScreen extends StatelessWidget {
                   icon: const Icon(Icons.settings)),
             ],
             bottom: const TabBar(
-               // isScrollable: true,
+              // isScrollable: true,
                 tabs: [
-              Tab(icon: Icon(Icons.home),text: "home"),
-              Tab(icon: Icon(Icons.list),text: "listview"),
-              Tab(icon: Icon(Icons.person),text: "Todo"),
-            ]),
+                  Tab(icon: Icon(Icons.home),text: "home"),
+                  Tab(icon: Icon(Icons.list),text: "listview"),
+                  Tab(icon: Icon(Icons.person),text: "Todo"),
+                ]),
           ),
           floatingActionButton: FloatingActionButton(
             elevation: 10,
@@ -267,12 +268,12 @@ class ListViewbuilder extends StatelessWidget {
 
 toast(text, color){
   Fluttertoast.showToast(
-      msg: text,
-      toastLength: Toast.LENGTH_SHORT,
-      gravity: ToastGravity.BOTTOM,
-      timeInSecForIosWeb: 1,
-      textColor: Colors.white,
-      fontSize: 16.0,
+    msg: text,
+    toastLength: Toast.LENGTH_SHORT,
+    gravity: ToastGravity.BOTTOM,
+    timeInSecForIosWeb: 1,
+    textColor: Colors.white,
+    fontSize: 16.0,
     backgroundColor: color,
   );
 }

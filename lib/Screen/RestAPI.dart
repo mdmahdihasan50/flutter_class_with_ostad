@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 
 class RestApi extends StatefulWidget {
-  RestApi({Key? key}) : super(key: key);
+  const RestApi({Key? key}) : super(key: key);
 
   @override
   State<RestApi> createState() => _RestApiState();
@@ -11,12 +10,6 @@ class RestApi extends StatefulWidget {
 
 class _RestApiState extends State<RestApi> {
 
-
-  final YoutubePlayerController youtubePlayerController =
-  YoutubePlayerController(
-    initialVideoId:
-    YoutubePlayer.convertUrlToId("https://www.youtube.com/watch?v=Bma-0hbT4K4&pp")!,
-  );
 
   var amol_list=[
 
@@ -317,58 +310,59 @@ class _RestApiState extends State<RestApi> {
       "des": "১ জগ পানি\nদুরুদে ইব্রাহীম -৩ বার\nসুরা নুরের ৩৫ নং আয়াতের (আল্লা-হু নুরুচ্ছামাওয়াতি ওয়াল আরদি) ৪১ পড়ে ৪১ দম।\nপানি টা ৪১ দিন খাবে সকাল সন্ধ্যা।\nটোটকাঃ শারিরিক সমস্যা হলে আতব চালের মার দৈনিক ১ বেলা ৩১ দিন খাবে।"
     }
   ];
+
+
+
   @override
   Widget build(BuildContext context) {
 
-    return YoutubePlayerBuilder(
-        player: YoutubePlayer(
-        controller: youtubePlayerController,
-    ),
-    builder: (context, player) {
-      return Scaffold(
-        appBar: AppBar(title: const Text('RestApi'),),
-        floatingActionButton: FloatingActionButton(
-          child: const Icon(Icons.add),
-          onPressed: () {
+    return Scaffold(
+      appBar: AppBar(title: const Text('RestApi'),),
+      floatingActionButton: FloatingActionButton(
+        child: const Icon(Icons.add),
+        onPressed: () {
 
+        },),
+      body: Center(
+        child: ListView.builder(
+          itemCount: amol_list.length,
+          itemBuilder: (context, index) {
+            return Column(
+              children: [
+                ListTile(
+                  onTap: () {
+
+                  },
+                  title: Text(amol_list[index]['tile']!),
+                  leading: const Icon(Icons.menu_book),
+                  trailing: const Icon(Icons.play_circle)
+                ),
+                const Divider(),
+              ],
+            );
           },),
-        body: Center(
-          child: Column(
-            children: [
-              AspectRatio(
-                  aspectRatio: 12/6.7,
-                  child: player),
-              Expanded(
-                child: ListView.builder(
-                  itemCount: amol_list.length,
-                  itemBuilder: (context, index) {
-                    return Column(
-                      children: [
-                        ListTile(
-                          title: Text(amol_list[index]['tile']!),
-                          // subtitle: Text(amol_list[index]['des']!,maxLines: 2),
-                          leading: const Icon(Icons.menu_book),
-                          trailing: IconButton(onPressed: () {
-
-                            youtubePlayerController.load(
-                              YoutubePlayer.convertUrlToId("https://www.youtube.com/watch?v=${amol_list[index]['videotitle']!}")!,
-                            );
-                            setState(() {
-
-                            });
-                          }, icon: const Icon(Icons.play_circle)),
-                        ),
-                        Divider(),
-                      ],
-                    );
-                  },),
-              ),
-
-            ],
-          ),
-        ),
-      );
-    });
+      ),
+    );
 
   }
 }
+
+
+
+class amolView extends StatefulWidget {
+  const amolView({Key? key}) : super(key: key);
+
+  @override
+  State<amolView> createState() => _amolViewState();
+}
+
+class _amolViewState extends State<amolView> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text('amolView')),
+
+    );
+  }
+}
+
